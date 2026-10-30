@@ -1,0 +1,187 @@
+/* Sistem E-Peperiksaan UTHM - Corporate Stylesheet */
+:root {
+  --uthm-blue-dark: #071e3d;
+  --uthm-blue: #002b7f;
+  --uthm-blue-light: #1f4287;
+  --uthm-red: #c8102e;
+  --uthm-red-dark: #900c24;
+  --uthm-gold: #d4af37;
+  --uthm-gold-light: #f3c623;
+  --uthm-bg: #f4f6fa;
+  --uthm-card: #ffffff;
+  --uthm-text: #1e293b;
+  --uthm-text-muted: #64748b;
+  --uthm-border: #e2e8f0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--uthm-bg);
+  color: var(--uthm-text);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Security Confidential Background Watermark Pattern */
+.confidential-watermark-bg {
+  position: relative;
+}
+
+.confidential-watermark-bg::before {
+  content: "UTHM SULIT • AKTA RAHSIA RASMI 1972 • DILARANG CETAK / SALIN • PEJABAT PENGURUSAN AKADEMIK UTHM • ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #c8102e;
+  transform: rotate(-25deg) translateY(-20%);
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  line-height: 50px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Laser Scanner Animation for Vault Camera */
+@keyframes laserSweep {
+  0% {
+    top: 5%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 5%;
+    opacity: 0.8;
+  }
+}
+
+.scanner-laser-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #22c55e, #4ade80, #22c55e, transparent);
+  box-shadow: 0 0 15px 4px rgba(34, 197, 94, 0.7), 0 0 30px 8px rgba(34, 197, 94, 0.4);
+  animation: laserSweep 2.4s ease-in-out infinite;
+  z-index: 20;
+}
+
+/* Scanner target box corner styling */
+.scanner-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #22c55e;
+  z-index: 25;
+}
+.scanner-corner-tl {
+  top: 12px;
+  left: 12px;
+  border-top: 3px solid #22c55e;
+  border-left: 3px solid #22c55e;
+}
+.scanner-corner-tr {
+  top: 12px;
+  right: 12px;
+  border-top: 3px solid #22c55e;
+  border-right: 3px solid #22c55e;
+}
+.scanner-corner-bl {
+  bottom: 12px;
+  left: 12px;
+  border-bottom: 3px solid #22c55e;
+  border-left: 3px solid #22c55e;
+}
+.scanner-corner-br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 3px solid #22c55e;
+  border-right: 3px solid #22c55e;
+}
+
+/* Watermark Stamp */
+.stamp-sulit {
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #c8102e;
+  border: 2px solid #c8102e;
+  border-radius: 4px;
+  transform: rotate(-6deg);
+  opacity: 0.88;
+}
+
+.stamp-lulus {
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #15803d;
+  border: 2px solid #15803d;
+  border-radius: 4px;
+  transform: rotate(-4deg);
+}
+
+/* Pulse animation for Live Security Status */
+@keyframes pulseLive {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(200, 16, 46, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0); }
+}
+
+.pulse-security-badge {
+  animation: pulseLive 2s infinite;
+}
+
+/* Official Print Stylesheet for UTHM/PPA/01 Form */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #dispatchFormPrintArea, #dispatchFormPrintArea * {
+    visibility: visible;
+  }
+  #dispatchFormPrintArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    color: black;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
